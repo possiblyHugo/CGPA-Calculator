@@ -7,25 +7,54 @@ int main() {
 	// Setup
 	int amount_of_semesters;
 	std::vector<float> semester_gpas;
+	bool failed_input;
 
 	// Prompt # of semesters
-	std::cout << "How many semesters? ";
-	std::cin >> amount_of_semesters;
+
+	while (true) { // Integer check
+		std::cout << "How many semesters? ";
+		std::cin >> amount_of_semesters;
+
+		if (std::cin.fail()) {
+			// Reset Cin
+			std::cin.clear();
+			std::cin.ignore();
+
+			// error prompt
+			std::cout << "Input a numerical value" << std::endl;
+		}
+		else {
+			break; // Correct input
+		}
+	}
 
 	// Info per semester
 	for (int semester = 0; semester < amount_of_semesters; semester++) {
 		// Course loop setup
 		int amount_of_courses;
 
-		// Prompt # of courses
-		std::cout << "Amount of courses for semester " << semester + 1 << "? ";
-		std::cin >> amount_of_courses;
+		// Prompt # of courses 
+
+		while (true) { // Integer check
+			std::cout << "Amount of courses for semester " << semester + 1 << "? ";
+			std::cin >> amount_of_courses;
+
+			if (std::cin.fail()) {
+				// Reset cin
+				std::cin.clear();
+				std::cin.ignore();
+
+				// Error prompt
+				std::cout << "Input a numerical value" << std::endl;
+			}
+
+		}
 
 		// Course specific information
 		std::vector<int> course_grades;
 		char temporary_letter;
 
-		for (int course; course < amount_of_courses; course++) {
+		for (int course = 0; course < amount_of_courses; course++) {
 			// Prompt
 			std::cout << "Course " << course + 1 << " grade (A-F): ";
 			std::cin >> temporary_letter;
@@ -40,10 +69,9 @@ int main() {
 		semester_gpas.push_back(Calculate_GPA(course_grades));
 	}
 
-	// Overall info
+	// CGPA
 	float CGPA = Calculate_CGPA(semester_gpas);
-	std::cout << CGPA << std::endl;
+	std::cout << "You CGPA is: " << CGPA << std::endl;
 	
-
 	return 0;
 }

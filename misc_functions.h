@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 
-
 // Conversion functions
 
 int Return_Scale(char letter_grade) {
@@ -37,4 +36,11 @@ float Calculate_GPA(std::vector<int> course_grades) {
 	return added_grades / course_grades.size();
 }
 
-float Calculate_CGPA()
+float Calculate_CGPA(std::vector<float> semester_grades) {
+	float added_gpas = 0;
+	for (int i = 0; i < semester_grades.size(); i++) {
+		added_gpas += semester_grades[i];
+	}
+
+	return added_gpas / semester_grades.size();
+}
