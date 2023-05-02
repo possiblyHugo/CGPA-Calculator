@@ -4,19 +4,39 @@
 #include <misc_functions.h>
 
 int main() {
-	
-	// Variables
-
-
-	// Setup 
-	int amount_of_courses;
+	// Setup
 	int amount_of_semesters;
-	std::vector<int> course_grades;
-	char temporary_letter_grade;
+	std::vector<float> semester_gpas;
 
-	// Calculated
-	float GPA = 0;
+	// Prompt # of semesters
+	std::cout << "How many semesters? ";
+	std::cin >> amount_of_semesters;
 
+	// Info per semester
+	for (int semester = 0; semester < amount_of_semesters; semester++) {
+		// Course loop setup
+		int amount_of_courses;
+
+		// Prompt # of courses
+		std::cout << "Amount of courses for semester " << semester + 1 << "? ";
+		std::cin >> amount_of_courses;
+
+		// Course specific information
+		std::vector<int> course_grades;
+		char temporary_letter;
+
+		for (int course; course < amount_of_courses; course++) {
+			// Prompt
+			std::cout << "Course " << course + 1 << " grade (A-F): ";
+			std::cin >> temporary_letter;
+
+			// Conversion / Calculation
+			temporary_letter = std::tolower(temporary_letter);
+
+			course_grades.push_back(Return_Scale(temporary_letter));
+		}
+
+	}
 
 	// Course taken
 	std::cout << "How many courses were taken? " << std::endl;

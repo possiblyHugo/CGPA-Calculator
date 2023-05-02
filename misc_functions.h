@@ -36,3 +36,5 @@ float Calculate_GPA(std::vector<int> course_grades) {
 
 	return added_grades / course_grades.size();
 }
+
+float Calculate_CGPA()
