@@ -30,34 +30,19 @@ int main() {
 			std::cout << "Course " << course + 1 << " grade (A-F): ";
 			std::cin >> temporary_letter;
 
-			// Conversion / Calculation
+			// Conversion
 			temporary_letter = std::tolower(temporary_letter);
 
 			course_grades.push_back(Return_Scale(temporary_letter));
 		}
 
+		// Calculate gpa from course grades
+		semester_gpas.push_back(Calculate_GPA(course_grades));
 	}
 
-	// Course taken
-	std::cout << "How many courses were taken? " << std::endl;
-	std::cin >> amount_of_courses;
-
-	// Semesters taken
-	std::cout << "How many semsters were taken?" << std::endl;
-	std::cin >> amount_of_semesters;
-
-	// Get course information
-	for (int i = 0; i < amount_of_courses; i++) {
-		std::cout << "Course " << i + 1 << " grade(A - F) : " << "\n";
-		std::cin >> temporary_letter_grade;
-		temporary_letter_grade = std::tolower(temporary_letter_grade);
-
-		course_grades.push_back(Return_Scale(temporary_letter_grade));
-;	}
-
-	// Display GPA
-	GPA = Calculate_GPA(course_grades);
-	std::cout << GPA;
+	// Overall info
+	float CGPA = Calculate_CGPA(semester_gpas);
+	std::cout << CGPA << std::endl;
 	
 
 	return 0;
