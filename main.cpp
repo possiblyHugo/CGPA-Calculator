@@ -46,6 +46,8 @@ int main() {
 
 				// Error prompt
 				std::cout << "Input a numerical value" << std::endl;
+			} else {
+				break;
 			}
 
 		}
